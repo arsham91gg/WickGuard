@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WICK GUARD</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:#050807;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:
+    radial-gradient(circle at top,#123b25 0%,#07110b 35%,#030504 75%);
+}
+
+.login-box{
+    width:100%;
+    max-width:430px;
+    background:rgba(10,20,14,.95);
+    border:1px solid #1f7a45;
+    border-radius:22px;
+    padding:35px 25px;
+    box-shadow:0 0 35px rgba(0,255,100,.12);
+    text-align:center;
+}
+
+.logo{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:25px;
+    background:#0b2415;
+    border:2px solid #29d66b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+    box-shadow:0 0 25px rgba(41,214,107,.2);
+}
+
+.login-box h1{
+    margin-top:20px;
+    color:#35ed79;
+    font-size:30px;
+}
+
+.login-box p{
+    color:#9ca9a1;
+    margin:10px 0 25px;
+}
+
+.input{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #28563a;
+    background:#07100a;
+    color:white;
+    outline:none;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+.input:focus{
+    border-color:#32df72;
+    box-shadow:0 0 10px rgba(50,223,114,.12);
+}
+
+.main-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#24c866;
+    color:#001b0a;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
+    transition:.2s;
+}
+
+.main-btn:hover{
+    background:#35ed79;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+    display:none;
+    min-height:100vh;
+}
+
+.topbar{
+    height:70px;
+    background:#07100a;
+    border-bottom:1px solid #173b25;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.top-logo{
+    font-size:21px;
+    font-weight:bold;
+    color:#35ed79;
+}
+
+.user-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.user-name{
+    background:#0d1d13;
+    border:1px solid #235b37;
+    padding:9px 13px;
+    border-radius:10px;
+    color:#b8ffcF;
+}
+
+.logout{
+    border:none;
+    background:#28100f;
+    color:#ff8178;
+    border:1px solid #632723;
+    padding:9px 13px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.container{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:25px 18px 50px;
+}
+
+.welcome{
+    background:linear-gradient(135deg,#0d2918,#07100a);
+    border:1px solid #1d6338;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:22px;
+}
+
+.welcome h2{
+    color:#35ed79;
+    margin-bottom:8px;
+}
+
+.welcome p{
+    color:#9eaaa3;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:#09120c;
+    border:1px solid #183b26;
+    border-radius:18px;
+    padding:22px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    border-color:#2ad96e;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,255,100,.07);
+}
+
+.card-icon{
+    font-size:32px;
+    margin-bottom:14px;
+}
+
+.card h3{
+    margin-bottom:7px;
+}
+
+.card p{
+    color:#8e9a92;
+    font-size:13px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    display:none;
+    margin-top:22px;
+    background:#08110b;
+    border:1px solid #183b26;
+    border-radius:18px;
+    padding:22px;
+}
+
+.section.active{
+    display:block;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    color:#35ed79;
+}
+
+.back-btn{
+    background:#111b14;
+    color:#b8c7bd;
+    border:1px solid #274733;
+    padding:9px 13px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* =========================
+   MEMBERS
+========================= */
+
+.member-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.member{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#0c1810;
+    border:1px solid #1b4028;
+    border-radius:13px;
+    padding:14px;
+    gap:10px;
+}
+
+.member-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    background:#12371f;
+    border:1px solid #2ad96e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    color:#35ed79;
+}
+
+.member-name{
+    font-weight:bold;
+}
+
+.member-rank{
+    font-size:12px;
+    color:#8f9e94;
+    margin-top:4px;
+}
+
+.member-actions{
+    display:flex;
+    gap:7px;
+}
+
+.small-btn{
+    border:1px solid #285b38;
+    background:#0c2113;
+    color:#aaffc4;
+    border-radius:9px;
+    padding:8px 10px;
+    cursor:pointer;
+}
+
+.delete-btn{
+    border-color:#612a25;
+    color:#ff8178;
+    background:#21100e;
+}
+
+/* =========================
+   RANK
+========================= */
+
+.rank-box{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.rank-item{
+    background:#0c1810;
+    border:1px solid #1b4028;
+    border-radius:13px;
+    padding:16px;
+}
+
+.rank-item strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.owner{
+    color:#ffd84a;
+}
+
+.admin{
+    color:#ff7575;
+}
+
+.guard{
+    color:#4cff91;
+}
+
+.member-rank-color{
+    color:#aaa;
+}
+
+/* =========================
+   BUILDER
+========================= */
+
+.builder{
+    display:grid;
+    gap:13px;
+}
+
+.builder textarea{
+    width:100%;
+    min-height:150px;
+    resize:vertical;
+    background:#050a07;
+    color:#fff;
+    border:1px solid #244d32;
+    border-radius:12px;
+    padding:13px;
+    outline:none;
+}
+
+.preview{
+    min-height:180px;
+    background:white;
+    color:black;
+    border-radius:12px;
+    padding:20px;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.setting{
+    background:#0c1810;
+    border:1px solid #1b4028;
+    padding:16px;
+    border-radius:13px;
+    margin-bottom:10px;
+}
+
+.setting span{
+    color:#8e9a92;
+    font-size:13px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-bg{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:50;
+}
+
+.modal{
+    width:100%;
+    max-width:400px;
+    background:#09120c;
+    border:1px solid #287444;
+    border-radius:18px;
+    padding:23px;
+}
+
+.modal h3{
+    color:#35ed79;
+    margin-bottom:18px;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.modal-buttons button{
+    flex:1;
+}
+
+select{
+    width:100%;
+    padding:13px;
+    background:#050a07;
+    color:#fff;
+    border:1px solid #285b38;
+    border-radius:10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .topbar{
+        padding:0 12px;
+    }
+
+    .top-logo{
+        font-size:17px;
+    }
+
+    .user-name{
+        max-width:120px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+
+    .container{
+        padding:18px 12px 40px;
+    }
+
+    .member{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .member-actions{
+        width:100%;
+    }
+
+    .member-actions button{
+        flex:1;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div class="login-page" id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">🛡️</div>
+
+        <h1>WICK GUARD</h1>
+
+        <p>ورود به پنل گارد</p>
+
+        <input
+            id="loginName"
+            class="input"
+            type="text"
+            placeholder="نام شما در ایتا"
+            maxlength="30"
+        >
+
+        <button class="main-btn" onclick="login()">
+            ورود به WICK GUARD
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div class="dashboard" id="dashboard">
+
+    <div class="topbar">
+
+        <div class="top-logo">
+            🛡️ WICK GUARD
+        </div>
+
+        <div class="user-area">
+
+            <div class="user-name" id="topUser">
+                کاربر
+            </div>
+
+            <button class="logout" onclick="logout()">
+                خروج
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="welcome">
+
+            <h2 id="welcomeText">
+                خوش آمدی
+            </h2>
+
+            <p>
+                پنل مدیریت و اطلاعات WICK GUARD
+            </p>
+
+        </div>
+
+
+        <!-- DASHBOARD CARDS -->
+
+        <div class="cards">
+
+            <div class="card" onclick="openSection('membersSection')">
+
+                <div class="card-icon">👥</div>
+
+                <h3>اعضای گارد</h3>
+
+                <p>
+                    مشاهده و مدیریت اعضای WICK GUARD
+                </p>
+
+            </div>
+
+
+            <div class="card" onclick="openSection('ranksSection')">
+
+                <div class="card-icon">🏅</div>
+
+                <h3>درجه‌بندی</h3>
+
+                <p>
+                    مدیریت رنک و جایگاه اعضا
+                </p>
+
+            </div>
+
+
+            <div class="card" onclick="openSection('builderSection')">
+
+                <div class="card-icon">🌐</div>
+
+                <h3>سایت‌ساز</h3>
+
+                <p>
+                    ساخت صفحه شخصی برای اعضا
+                </p>
+
+            </div>
+
+
+            <div class="card" onclick="openSection('settingsSection')">
+
+                <div class="card-icon">⚙️</div>
+
+                <h3>تنظیمات</h3>
+
+                <p>
+                    تنظیمات حساب و سایت
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             MEMBERS SECTION
+        ====================== -->
+
+        <div class="section" id="membersSection">
+
+            <div class="section-title">
+
+                <h2>👥 اعضای گارد</h2>
+
+                <button
+                    class="back-btn"
+                    onclick="closeSections()">
+                    برگشت
+                </button>
+
+            </div>
+
+
+            <button
+                class="main-btn"
+                style="margin-bottom:15px"
+                onclick="openAddMember()">
+
+                ➕ افزودن عضو
+
+            </button>
+
+
+            <div class="member-list" id="memberList"></div>
+
+        </div>
+
+
+        <!-- =====================
+             RANK SECTION
+        ====================== -->
+
+        <div class="section" id="ranksSection">
+
+            <div class="section-title">
+
+                <h2>🏅 رنک‌ها</h2>
+
+                <button
+                    class="back-btn"
+                    onclick="closeSections()">
+                    برگشت
+                </button>
+
+            </div>
+
+
+            <div class="rank-box">
+
+                <div class="rank-item">
+
+                    <strong class="owner">
+                        👑 OWNER
+                    </strong>
+
+                    <span>
+                        مالک و مدیر اصلی WICK GUARD
+                    </span>
+
+                </div>
+
+
+                <div class="rank-item">
+
+                    <strong class="admin">
+                        🛠️ ADMIN
+                    </strong>
+
+                    <span>
+                        مدیریت اعضا و بخش‌های سایت
+                    </span>
+
+                </div>
+
+
+                <div class="rank-item">
+
+                    <strong class="guard">
+                        🛡️ GUARD
+                    </strong>
+
+                    <span>
+                        عضو رسمی گارد
+                    </span>
+
+                </div>
+
+
+                <div class="rank-item">
+
+                    <strong class="member-rank-color">
+                        👤 MEMBER
+                    </strong>
+
+                    <span>
+                        عضو عادی
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             SITE BUILDER
+        ====================== -->
+
+        <div class="section" id="builderSection">
+
+            <div class="section-title">
+
+                <h2>🌐 سایت‌ساز</h2>
+
+                <button
+                    class="back-btn"
+                    onclick="closeSections()">
+                    برگشت
+                </button>
+
+            </div>
+
+
+            <div class="builder">
+
+                <input
+                    class="input"
+                    id="siteTitle"
+                    placeholder="عنوان سایت"
+                >
+
+                <textarea
+                    id="siteText"
+                    placeholder="متن سایت خود را اینجا بنویس..."
+                ></textarea>
+
+
+                <button
+                    class="main-btn"
+                    onclick="createSite()">
+
+                    ساخت سایت
+
+                </button>
+
+
+                <div
+                    class="preview"
+                    id="sitePreview">
+
+                    پیش‌نمایش سایت اینجا نمایش داده می‌شود.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             SETTINGS
+        ====================== -->
+
+        <div class="section" id="settingsSection">
+
+            <div class="section-title">
+
+                <h2>⚙️ تنظیمات</h2>
+
+                <button
+                    class="back-btn"
+                    onclick="closeSections()">
+                    برگشت
+                </button>
+
+            </div>
+
+
+            <div class="setting">
+
+                <b>نام ایتا</b>
+
+                <br>
+
+                <span id="settingName">
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="setting">
+
+                <b>وضعیت حساب</b>
+
+                <br>
+
+                <span>
+                    فعال
+                </span>
+
+            </div>
+
+
+            <div class="setting">
+
+                <b>نسخه WICK GUARD</b>
+
+                <br>
+
+                <span>
+                    1.0
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     RANK MODAL
+========================= -->
+
+<div class="modal-bg" id="rankModal">
+
+    <div class="modal">
+
+        <h3>
+            🏅 تغییر رنک عضو
+        </h3>
+
+        <p id="editingMemberName"
+           style="color:#aaa;margin-bottom:15px">
+        </p>
+
+
+        <select id="rankSelect">
+
+            <option value="OWNER">
+                👑 OWNER
+            </option>
+
+            <option value="ADMIN">
+                🛠️ ADMIN
+            </option>
+
+            <option value="GUARD">
+                🛡️ GUARD
+            </option>
+
+            <option value="MEMBER">
+                👤 MEMBER
+            </option>
+
+        </select>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="main-btn"
+                onclick="saveRank()">
+
+                ذخیره
+
+            </button>
+
+
+            <button
+                class="back-btn"
+                onclick="closeRankModal()">
+
+                لغو
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ADD MEMBER MODAL
+========================= -->
+
+<div class="modal-bg" id="addMemberModal">
+
+    <div class="modal">
+
+        <h3>
+            ➕ افزودن عضو
+        </h3>
+
+
+        <input
+            id="newMemberName"
+            class="input"
+            placeholder="نام ایتا"
+            maxlength="30"
+        >
+
+
+        <select id="newMemberRank">
+
+            <option value="MEMBER">
+                👤 MEMBER
+            </option>
+
+            <option value="GUARD">
+                🛡️ GUARD
+            </option>
+
+            <option value="ADMIN">
+                🛠️ ADMIN
+            </option>
+
+            <option value="OWNER">
+                👑 OWNER
+            </option>
+
+        </select>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="main-btn"
+                onclick="addMember()">
+
+                افزودن
+
+            </button>
+
+
+            <button
+                class="back-btn"
+                onclick="closeAddMember()">
+
+                لغو
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   DATA
+========================= */
+
+let members =
+JSON.parse(localStorage.getItem("wickGuardMembers")) || [];
+
+
+let editingIndex = null;
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(){
+
+    const name =
+        document.getElementById("loginName").value.trim();
+
+
+    if(name === ""){
+
+        alert("لطفاً نام خود را وارد کن.");
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "wickGuardName",
+        name
+    );
+
+
+    showDashboard(name);
+
+}
+
+
+/* =========================
+   SHOW DASHBOARD
+========================= */
+
+function showDashboard(name){
+
+    document.getElementById("loginPage")
+        .style.display="none";
+
+
+    document.getElementById("dashboard")
+        .style.display="block";
+
+
+    document.getElementById("topUser")
+        .innerText=name;
+
+
+    document.getElementById("welcomeText")
+        .innerText="خوش آمدی " + name + " 👋";
+
+
+    document.getElementById("settingName")
+        .innerText=name;
+
+
+    renderMembers();
+
+}
+
+
+/* =========================
+   AUTO LOGIN
+========================= */
+
+const savedName =
+    localStorage.getItem("wickGuardName");
+
+
+if(savedName){
+
+    showDashboard(savedName);
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "wickGuardName"
+    );
+
+
+    location.reload();
+
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+function openSection(id){
+
+    closeSections();
+
+    document.getElementById(id)
+        .classList.add("active");
+
+}
+
+
+function closeSections(){
+
+    document.querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+}
+
+
+/* =========================
+   MEMBERS
+========================= */
+
+function saveMembers(){
+
+    localStorage.setItem(
+        "wickGuardMembers",
+        JSON.stringify(members)
+    );
+
+}
+
+
+function renderMembers(){
+
+    const list =
+        document.getElementById("memberList");
+
+
+    list.innerHTML="";
+
+
+    if(members.length === 0){
+
+        list.innerHTML=`
+        
+        <div class="setting">
+            هنوز عضوی اضافه نشده است.
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    members.forEach((member,index)=>{
+
+        let rankClass="member-rank-color";
+
+
+        if(member.rank==="OWNER")
+            rankClass="owner";
+
+
+        if(member.rank==="ADMIN")
+            rankClass="admin";
+
+
+        if(member.rank==="GUARD")
+            rankClass="guard";
+
+
+        let icon="👤";
+
+
+        if(member.rank==="OWNER")
+            icon="👑";
+
+
+        if(member.rank==="ADMIN")
+            icon="🛠️";
+
+
+        if(member.rank==="GUARD")
+            icon="🛡️";
+
+
+        list.innerHTML += `
+
+        <div class="member">
+
+            <div class="member-info">
+
+                <div class="avatar">
+                    ${icon}
+                </div>
+
+                <div>
+
+                    <div class="member-name">
+                        ${escapeHTML(member.name)}
+                    </div>
+
+                    <div class="member-rank ${rankClass}">
+                        ${member.rank}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="member-actions">
+
+                <button
+                    class="small-btn"
+                    onclick="openRankModal(${index})">
+
+       
